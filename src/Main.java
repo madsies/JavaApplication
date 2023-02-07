@@ -11,15 +11,24 @@ class Main{
         manager = new WindowManager("Program!", 1920, 1080);
 
         Timer t = new Timer();
+
         TimerTask tsk = new TimerTask() {
             @Override
             public void run() {
-                boolean code;
-                code = manager.Quit();
-                System.out.println("Status Code: "+code);
+                manager.tick();
+                manager.setWindowTitle("Program Window!! (ticks:"+manager.getTicks()+")");
+
+                if (manager.getTicks() > 5){
+                    System.out.println("Cancelling.");
+                    manager.Quit();
+
+                    cancel();
+                }
             }
         };
-        t.schedule(tsk, 1000);
+        t.scheduleAtFixedRate(tsk, 0L, 1000L);
+
+        System.out.println("haha: "+manager.isLive());
 
 
     }

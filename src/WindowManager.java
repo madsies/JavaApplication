@@ -4,6 +4,9 @@ import java.awt.*;
 class WindowManager{
 
     Frame root;
+    private Boolean live = true;
+    private int ticks = 0;
+
     public WindowManager(String title, int width, int height){
 
         Rectangle bounds;
@@ -19,11 +22,27 @@ class WindowManager{
         root.setVisible(true);
     }
 
-    public boolean Quit(){
+    public void Quit(){
         // Returns True of exits safely, false if not.
 
         root.dispose();
-        return true;
+        live = false;
+    }
+
+    public boolean isLive(){
+        return live;
+    }
+
+    public void setWindowTitle(String title){
+        root.setTitle(title);
+    }
+
+    public void tick(){
+        ticks++;
+    }
+
+    public int getTicks(){
+        return ticks;
     }
 
 }
