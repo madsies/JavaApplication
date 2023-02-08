@@ -1,3 +1,5 @@
+import customComponents.UpgradeButton;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,12 +12,16 @@ class WindowManager{
     public WindowManager(String title, int width, int height){
 
         Rectangle bounds;
+        UpgradeButton button;
 
         bounds = new Rectangle();
         bounds.setSize(width, height);
 
+        button = new UpgradeButton(0);
+
         root = new JFrame();
         root.setTitle(title);
+        root.add(button.getObject());
 
         root.setBounds(bounds);
 
