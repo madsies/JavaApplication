@@ -13,15 +13,22 @@ class WindowManager{
 
         Rectangle bounds;
         UpgradeButton button;
+        LayoutManager manager;
+
+        manager = new FlowLayout();
 
         bounds = new Rectangle();
         bounds.setSize(width, height);
 
-        button = new UpgradeButton(0);
+        button = new UpgradeButton(0, "Button!");
 
         root = new JFrame();
+
         root.setTitle(title);
-        root.add(button.getObject());
+        button.registerElements(manager);
+        manager.layoutContainer(root);
+        manager.preferredLayoutSize(root);
+        root.setLayout(manager);
 
         root.setBounds(bounds);
 
